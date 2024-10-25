@@ -4,125 +4,64 @@
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     }
 
-    <body onload="time()" class="app sidebar-mini rtl">
-        <!-- Navbar-->
-        <header class="app-header">
-            <!-- Sidebar toggle button-->
-            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
-            <!-- Navbar Right Menu-->
-            <ul class="app-nav">
-                <!-- User Menu-->
-                <li>
-                    <a class="app-nav__item" href="../Views/Home/Index.cshtml"><i class='bx bx-log-out bx-rotate-180'></i> </a>
-                </li>
-            </ul>
-        </header>
-        <!-- Sidebar menu-->
-        <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-        <aside class="app-sidebar">
-            <div class="app-sidebar__user">
-                <img class="app-sidebar__user-avatar" src="~/assets/images/avtHotBoy.jpg" width="50px" alt="User Image">
-                <div>
-                    <p class="app-sidebar__user-name"><b>Admin</b></p>
-                    <p class="app-sidebar__user-designation">Wellcome my Boss</p>
-                </div>
-            </div>
-            <hr>
-            <ul class="app-menu">
-                <li>
-                    <a class="app-menu__item haha" href="phan-mem-ban-hang.html">
-                        <i class='app-menu__icon bx bx-cart-alt'></i>
-                        <span class="app-menu__label">POS Bán Hàng</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="app-menu__item active" href="index.html">
-                        <i class='app-menu__icon bx bx-id-card'></i>
-                        <span class="app-menu__label">Quản lý nhân viên</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="app-menu__item" href="table-data-product.html">
-                        <i class='app-menu__icon bx bx-id-card'></i>
-                        <span class="app-menu__label">Quản lý sản phẩm</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="app-menu__item" href="table-data-oder.html">
-                        <i class='app-menu__icon bx bx-id-card'></i>
-                        <span class="app-menu__label">Quản lý đơn hàng</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="app-menu__item" href="#">
-                        <i class='app-menu__icon bx bx-id-card'></i>
-                        <span class="app-menu__label">Quản lý danh mục</span>
-                    </a>
-                </li>
-            </ul>
-        </aside>
-        <!-- Main content -->
-        <main class="app-content">
-            <div class="app-title">
-                <ul class="app-breadcrumb breadcrumb side">
-                    <li class="breadcrumb-item active"><a href="#"><b>Danh sách nhân viên</b></a></li>
-                </ul>
-                <div id="clock"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="tile">
-                        <div class="tile-body">
-                            <div class="row element-button">
-                                <div class="col-sm-2">
-                                    <a class="btn btn-add btn-sm" href="form-add-nhan-vien.html" title="Thêm">
-                                        <i class="fas fa-plus"></i>
-                                        Tạo mới nhân viên
-                                    </a>
-                                </div>
-                            </div>
-                            <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0" border="0" id="sampleTable">
-                                <thead>
-                                    <tr>
-                                        <th>ID nhân viên</th>
-                                        <th width="150">Họ và tên</th>
-                                        <th width="20">Ảnh thẻ</th>
-                                        <th width="300">Địa chỉ</th>
-                                        <th>Ngày sinh</th>
-                                        <th>Giới tính</th>
-                                        <th>SĐT</th>
-                                        <th>Chức vụ</th>
-                                        <th width="100">Tính năng</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>#CD12837</td>
-                                        <td>Hồ Thị Thanh Ngân</td>
-                                        <td><img class="img-card-person" src="~/assets/img-anhthe/1.jpg" alt=""></td>
-                                        <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh</td>
-                                        <td>12/02/1999</td>
-                                        <td>Nữ</td>
-                                        <td>0926737168</td>
-                                        <td>Bán hàng</td>
-                                        <td class="table-td-center">
-                                            <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                            <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>#SX22837</td>
-                                        <!-- More rows can be added here -->
-                                    </tr>
-                                </tbody>
-                            </table>
+    <div class="app-title">
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item active"><a href="#"><b>Danh sách nhân viên</b></a></li>
+        </ul>
+        <div id="clock"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="tile-body">
+                    <div class="row element-button">
+                        <div class="col-sm-2">
+                            <a class="btn btn-add btn-sm" href="form-add-nhan-vien.html" title="Thêm">
+                                <i class="fas fa-plus"></i>
+                                Tạo mới nhân viên
+                            </a>
                         </div>
                     </div>
+                    <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0" border="0" id="sampleTable">
+                        <thead>
+                            <tr>
+                                <th>ID nhân viên</th>
+                                <th width="150">Họ và tên</th>
+                                <th width="20">Ảnh thẻ</th>
+                                <th width="300">Địa chỉ</th>
+                                <th>Ngày sinh</th>
+                                <th>Giới tính</th>
+                                <th>SĐT</th>
+                                <th>Chức vụ</th>
+                                <th width="100">Tính năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#CD12837</td>
+                                <td>Hồ Thị Thanh Ngân</td>
+                                <td><img class="img-card-person" src="~/assets/img-anhthe/1.jpg" alt=""></td>
+                                <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh</td>
+                                <td>12/02/1999</td>
+                                <td>Nữ</td>
+                                <td>0926737168</td>
+                                <td>Bán hàng</td>
+                                <td class="table-td-center">
+                                    <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#SX22837</td>
+                                <!-- More rows can be added here -->
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </main>
-    </body>
+        </div>
+    </div>
