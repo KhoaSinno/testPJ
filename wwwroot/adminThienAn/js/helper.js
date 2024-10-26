@@ -111,6 +111,9 @@ function time() {
         return (i < 10) ? "0" + i : i;
     }
 }
+// Gọi hàm time khi DOM đã được tải
+document.addEventListener("DOMContentLoaded", time);
+
 
 //In dữ liệu
 var myApp = new function () {

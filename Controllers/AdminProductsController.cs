@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ThienAnFuni.Models;
-
+using Microsoft.EntityFrameworkCore;
 namespace ThienAnFuni.Controllers
 {
     public class AdminProductsController : Controller
@@ -12,9 +12,14 @@ namespace ThienAnFuni.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            // Lấy danh sách sản phẩm cùng thông tin danh mục từ cơ sở dữ liệu
+            var products = await _context.Products
+                .Include(p => p.Category)
+                .ToListAsync();
+
+            return View(products);
         }
         public IActionResult Create()
         {
