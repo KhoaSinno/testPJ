@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<Category>
+
+@{
     ViewData["Title"] = "Quản lý sản phẩm";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -19,10 +21,10 @@
         justify-content: center;
     }
 
-    .Choicefile:hover {
-        text-decoration: none;
-        color: white;
-    }
+        .Choicefile:hover {
+            text-decoration: none;
+            color: white;
+        }
 
     #uploadfile,
     .removeimg {
@@ -45,32 +47,31 @@
         width: 25px;
         /* border: 3px solid red; */
         border-radius: 50%;
-
     }
 
-    .removeimg::before {
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        content: '';
-        border: 1px solid red;
-        background: red;
-        text-align: center;
-        display: block;
-        margin-top: 11px;
-        transform: rotate(45deg);
-    }
+        .removeimg::before {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            content: '';
+            border: 1px solid red;
+            background: red;
+            text-align: center;
+            display: block;
+            margin-top: 11px;
+            transform: rotate(45deg);
+        }
 
-    .removeimg::after {
-        /* color: #FFF; */
-        /* background-color: #DC403B; */
-        content: '';
-        background: red;
-        border: 1px solid red;
-        text-align: center;
-        display: block;
-        transform: rotate(-45deg);
-        margin-top: -2px;
-    }
+        .removeimg::after {
+            /* color: #FFF; */
+            /* background-color: #DC403B; */
+            content: '';
+            background: red;
+            border: 1px solid red;
+            text-align: center;
+            display: block;
+            transform: rotate(-45deg);
+            margin-top: -2px;
+        }
 </style>
 <div class="app-title">
     <ul class="app-breadcrumb breadcrumb">
@@ -123,15 +124,11 @@
                         <label for="categorySelect" class="control-label">Danh mục</label>
                         <select class="form-control" id="categorySelect" name="CategoryId">
                             <option value="">-- Chọn danh mục --</option>
-                            <option value="1">Bàn ăn</option>
-                            <option value="2">Bàn thông minh</option>
-                            <option value="3">Tủ</option>
-                            <option value="4">Ghế gỗ</option>
-                            <option value="5">Ghế sắt</option>
-                            <option value="6">Giường người lớn</option>
-                            <option value="7">Giường trẻ em</option>
-                            <option value="8">Bàn trang điểm</option>
-                            <option value="9">Giá đỡ</option>
+                            @foreach (var category in Model)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+
                         </select>
                     </div>
                     <div class="form-group col-md-3">
@@ -183,7 +180,7 @@
                     <div class="form-group col-md-3">
                         <label class="control-label">Thời gian bảo hành</label>
                         <input class="form-control" type="text" name="WarrantyPeriod"
-                            placeholder="Nhập thời gian bảo hành">
+                               placeholder="Nhập thời gian bảo hành">
                     </div>
                     <div class="form-group col-md-3">
                         <label class="control-label">Kích hoạt</label>
@@ -202,15 +199,17 @@
                             <a class="removeimg" href="javascript:void(0);"></a>
                         </div>
                         <div id="boxchoice">
-                            <a href="javascript:void(0);" class="Choicefile"><i class="fas fa-cloud-upload-alt"></i>
-                                Chọn ảnh</a>
+                            <a href="javascript:void(0);" class="Choicefile">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                Chọn ảnh
+                            </a>
                             <p style="clear:both"></p>
                         </div>
                     </div>
                     <div class="form-group col-md-12">
                         <label class="control-label">Mô tả sản phẩm</label>
                         <textarea class="form-control" name="Description" id="mota"
-                            placeholder="Nhập mô tả sản phẩm"></textarea>
+                                  placeholder="Nhập mô tả sản phẩm"></textarea>
                         <script>CKEDITOR.replace('mota');</script>
                     </div>
 

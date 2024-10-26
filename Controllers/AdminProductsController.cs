@@ -26,9 +26,10 @@ public class AdminProductsController : Controller
         return View(products);
     }
 
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        return View();
+        var caterories = await _context.Categories.ToListAsync();
+        return View(caterories);
     }
 
     [HttpPost]

@@ -13,17 +13,14 @@ namespace ThienAnFuni.Models
         [Range(0, double.MaxValue, ErrorMessage = "Giá là số")]
         public double Price { get; set; }
 
-        [Required]
         public string? Unit { get; set; }
 
-        [Required]
         public string? Material { get; set; }
 
         public string? Dimension { get; set; }
 
         public string? Standard { get; set; }
 
-        [Required]
         public string? Color { get; set; }
 
         public string? Type { get; set; }
