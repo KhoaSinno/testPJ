@@ -1,29 +1,75 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ThienAnFuni.Models;
 using Microsoft.EntityFrameworkCore;
-namespace ThienAnFuni.Controllers
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using System.Threading.Tasks;
+using ThienAnFuni.Models;
+
+public class AdminProductsController : Controller
 {
-    public class AdminProductsController : Controller
+    private readonly TAF_DbContext _context;
+    private readonly IWebHostEnvironment _webHostEnvironment;
+
+    // Constructor duy nhất cho controller
+    public AdminProductsController(TAF_DbContext context, IWebHostEnvironment webHostEnvironment)
     {
-        private readonly TAF_DbContext _context;
+        _context = context;
+        _webHostEnvironment = webHostEnvironment;
+    }
 
-        public AdminProductsController(TAF_DbContext context)
+    public async Task<IActionResult> Index()
+    {
+        var products = await _context.Products
+            .Include(p => p.Category)
+            .ToListAsync();
+        return View(products);
+    }
+
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(Product model, IFormFile ImageUpload)
+    {
+        if (ModelState.IsValid)
         {
-            _context = context;
+            if (ImageUpload != null && ImageUpload.Length > 0)
+            {
+                // Đường dẫn thư mục lưu ảnh
+                string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "adminThienAn/image_product");
+
+                // Tạo thư mục nếu chưa tồn tại
+                if (!Directory.Exists(uploadDir))
+                {
+                    Directory.CreateDirectory(uploadDir);
+                }
+
+                // Tạo tên file duy nhất cho ảnh
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageUpload.FileName);
+
+                // Đường dẫn đầy đủ đến file
+                string filePath = Path.Combine(uploadDir, fileName);
+
+                // Upload file
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ImageUpload.CopyToAsync(fileStream);
+                }
+
+                // Lưu tên file vào thuộc tính MainImg
+                model.MainImg = fileName;
+            }
+
+            // Thêm sản phẩm vào database
+            _context.Products.Add(model);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Index()
-        {
-            // Lấy danh sách sản phẩm cùng thông tin danh mục từ cơ sở dữ liệu
-            var products = await _context.Products
-                .Include(p => p.Category)
-                .ToListAsync();
-
-            return View(products);
-        }
-        public IActionResult Create()
-        {
-            return View();
-        }
+        return View(model);
     }
 }

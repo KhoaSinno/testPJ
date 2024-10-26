@@ -112,8 +112,10 @@ function time() {
     }
 }
 // Gọi hàm time khi DOM đã được tải
-document.addEventListener("DOMContentLoaded", time);
+// document.addEventListener("DOMContentLoaded", time);
 
+// Gọi hàm time sau 5 giây
+// setTimeout(time, 5000);
 
 //In dữ liệu
 var myApp = new function () {

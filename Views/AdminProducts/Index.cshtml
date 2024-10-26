@@ -50,8 +50,13 @@
                                 <td>@product.Id</td>
                                 <td>@product.Name</td>
                                 <td>
-                                    <img src="@Url.Content("~/customerThienAn/img/gheSofa_GoTramTN_VLINE601_nau_xamdam.jpg")"
-                                        alt="" width="100px" />
+                                    @if (product?.MainImg != null)
+                                    {
+                                        <img src="~/adminThienAn/image_product/@product.MainImg" alt="Product Image" width="100px" />
+                                    }
+
+                                  @*   <img src="@Url.Content("~/customerThienAn/img/gheSofa_GoTramTN_VLINE601_nau_xamdam.jpg")"
+                                        alt="" width="100px" /> *@
                                 </td>
                                 <td>@(product.Goods?.Sum(g => g.Quantity) ?? 0)</td>
                                 <td>
