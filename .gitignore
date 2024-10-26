@@ -25,3 +25,6 @@ logs/*.log
 *.userassets
 *.sln.docstates
 temp/
+
+appsettings.Local.json
+testPJ.sln
