@@ -20,11 +20,15 @@
 </head>
 
 <body>
+    <!-- Page Preloder -->
+    @* <div id="preloder">
+        <div class="loader"></div>
+    </div> *@
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="/customerThienAn/img/logo.png" alt=""></a>
+            <a href="@Url.Action("Index", "Home")"><img src="customerThienAn/img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -44,12 +48,13 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a href="@Url.Action("Login", "Home")"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
+                <li class="active"><a class="app-nav__item" href="@Url.Action("Index", "Home")">Home</a>
+                </li>
                 <li><a href="./shop-grid.html">Shop</a></li>
                 <li>
                     <a href="#">Pages</a>
@@ -111,7 +116,7 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                <a href="@Url.Action("Login", "Home")"><i class="fa fa-user"></i> Login</a>
                             </div>
                         </div>
                     </div>
@@ -122,13 +127,13 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="/customerThienAn/img/logo.png" alt=""></a>
+                        <a href="@Url.ActionLink("Index","Home")"><img src="customerThienAn/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li class="active"><a href="@Url.ActionLink("Index","Home")">Home</a></li>
                             <li><a href="./shop-grid.html">Shop</a></li>
                             <li>
                                 <a href="#">Pages</a>
@@ -178,9 +183,9 @@
                             <a href="./index.html"><img src="/customerThienAn/img/logo.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
+                            <li>Address: 256, An Hoa, Ninh Kieu</li>
+                            <li>Phone: +84 30 04 1975</li>
+                            <li>Email: httt2211@ctuet.edu.vn</li>
                         </ul>
                     </div>
                 </div>
