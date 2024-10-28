@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading.Tasks;
 using ThienAnFuni.Models;
 
+[Route("admin/products")]
 public class AdminProductsController : Controller
 {
     private readonly TAF_DbContext _context;
@@ -17,7 +18,7 @@ public class AdminProductsController : Controller
         _context = context;
         _webHostEnvironment = webHostEnvironment;
     }
-
+    [HttpGet("Index")]
     public async Task<IActionResult> Index()
     {
         var products = await _context.Products
@@ -25,14 +26,14 @@ public class AdminProductsController : Controller
             .ToListAsync();
         return View(products);
     }
-
+    [HttpGet("Create")]
     public async Task<IActionResult> Create()
     {
         var caterories = await _context.Categories.ToListAsync();
         return View(caterories);
     }
 
-    [HttpPost]
+    [HttpPost("Create")]
     public async Task<IActionResult> Create(Product model, IFormFile ImageUpload)
     {
         if (ModelState.IsValid)
