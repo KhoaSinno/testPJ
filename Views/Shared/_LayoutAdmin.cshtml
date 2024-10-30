@@ -88,6 +88,12 @@
                     <span class="app-menu__label">Quản lý danh mục</span>
                 </a>
             </li>
+            <li>
+                <a class="app-menu__item" asp-controller="Shipments" asp-action="Index">
+                    <i class='app-menu__icon bx bx-id-card'></i>
+                    <span class="app-menu__label">Quản lý danh mục</span>
+                </a>
+            </li>
         </ul>
     </aside>
     <main class="app-content">
@@ -103,9 +109,9 @@
     <script type="text/javascript">
         $('#sampleTable').DataTable();
     </script>
-    
-    <script src="/adminThienAn/js/helper.js"></script>
     <script src="/adminThienAn/js/plugins/chart.js"></script>
+    <script src="/adminThienAn/js/helper.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 
 </body>
 

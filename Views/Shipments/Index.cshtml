@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Quản lý nhập hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="app-title">
+    @*     <ul class="app-breadcrumb breadcrumb side">
+    <li class="breadcrumb-item active"><a href="#"><b>Danh sách sản phẩm</b></a></li>
+    </ul> *@
+    <div id="clock"></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <div class="row element-button">
+                    <div class="col-sm-2">
+                        <a class="btn btn-add btn-sm" asp-controller="adminProducts" asp-action="Create" title="Thêm">
+                            <i class="fas fa-plus"></i>
+                            Tạo mới sản phẩm
+                        </a>
+                    </div>
+
+                    @*                     <div class="col-sm-2">
+                    <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)">
+                    <i class="fas fa-file-pdf"></i> Xuất PDF
+                    </a>
+                    </div> *@
+
+                </div>
+
+                <form class="row" asp-action="Create" enctype="multipart/form-data">
+                    <div class="form-group col-md-3">
+                        <label for="supplierSelect" class="control-label">Nhà cung cấp</label>
+                        <select class="form-control" id="supplierSelect" name="Supplier">
+                            <option value="">-- Chọn nhà cung cấp --</option>
+                            @if (ViewBag.Categories != null)
+                            {
+                                foreach (var supplier in ViewBag.Suppliers)
+                                {
+                                    <option value="@supplier.Id">@supplier.DisplayName</option>
+                                }
+                            }
+                            else
+                            {
+                                <option value="">Không có danh mục nào</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Tên hàng</label>
+                        <input class="form-control" type="text" name="Name" placeholder="Tên hàng">
+                    </div>
+
+                    <table class="table table-hover table-bordered" id="sampleTable">
+                        <thead>
+                            <tr>
+                                <th>Mã sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Ảnh</th>
+                                <th>Số lượng</th>
+                                <th>Tình trạng</th>
+                                <th>Giá tiền</th>
+                                <th>Danh mục</th>
+                                <th>Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                    <div>
+                        <input class="btn btn-success" type="submit" name="save" value="Lưu" />
+                        <input class="btn btn-success" type="submit" name="close" value="Hủy" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/adminThienAn/js/heper-upImg_Time.js"></script>
+}

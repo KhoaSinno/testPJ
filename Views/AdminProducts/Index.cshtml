@@ -52,7 +52,10 @@
                                 <td>
                                     @if (product?.MainImg != null)
                                     {
-                                        <img src="~/adminThienAn/image_product/@product.MainImg" alt="Product Image" width="100px" />
+                                        <img src="~/adminThienAn/image_product/@product.MainImg" alt="@product.Name" width="100px" />
+                                    }else
+                                    {
+                                        <img src="~/adminThienAn/image_product/default.png" alt="Product Image" width="100px" />
                                     }
 
                                   @*   <img src="@Url.Content("~/customerThienAn/img/gheSofa_GoTramTN_VLINE601_nau_xamdam.jpg")"
@@ -84,3 +87,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="/adminThienAn/js/heper-upImg_Time.js"></script>
+}
