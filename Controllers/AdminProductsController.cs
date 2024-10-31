@@ -21,6 +21,7 @@ public class AdminProductsController : Controller
     [HttpGet("Index")]
     public async Task<IActionResult> Index()
     {
+        ViewData["ActiveMenu"] = "Product";
         var products = await _context.Products
             .Include(p => p.Category)
             .ToListAsync();
